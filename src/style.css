@@ -3,13 +3,16 @@
 }
 
 button#start-button {
-  color: blue;
+  color: rgb(157, 157, 209);
+}
+menu {
+  margin: auto;
 }
 
 main {
-  height: calc(100vh - 4 rem);
+  height: calc(100vh - 2rem);
   aspect-ratio: 9/16;
-  background-color: blue;
+  background-color: rgb(20, 19, 19);
   margin: auto;
   position: relative;
 }
@@ -19,7 +22,65 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  background-color: red;
+  width: 60px;
+  height: 60px;
+  background-image: url("../../img/og_003.png");
+  background-size: cover;
 }
+
+/* star effect
+.stars {
+  position: inherit;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.stars > div {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.stars .stars-back {
+  top: -50%;
+  opacity: 0.5;
+  background-image: radial-gradient(
+      2px 2px at 20px 30px,
+      #eee,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(1px 1px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  animation: stars 4s infinite linear;
+}
+
+.stars .stars-middle {
+  background-image: radial-gradient(
+      3px 3px at 50px 160px,
+      #ddd,
+      rgba(0, 0, 0, 0)
+    ),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars 2.5s infinite linear;
+}
+
+@keyframes stars {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+} */

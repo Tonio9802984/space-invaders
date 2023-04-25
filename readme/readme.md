@@ -1,6 +1,6 @@
 #################
 
-# Project #1 Guidelines : THe Game
+# Project #1 Guidelines : The Game
 
 ################
 
@@ -8,6 +8,7 @@
 
 I'm gonna work on space invader Game, on 4 iterations
 Space Invaders is a shoot 'em up
+It's gonna be done in Vanilla js
 
 - Iteration 1 working on MVP
 - Iteration 2 update the MVP
