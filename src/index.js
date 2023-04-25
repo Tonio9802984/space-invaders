@@ -1,4 +1,8 @@
 import { Spaceship } from "./space-ship.js";
+import { Asteroid } from "./asteroid.js";
+//
+export const modal = document.getElementById("start-game");
+// set up of gameArea where we gonna have our map to play
 export const gameArea = document.querySelector("main");
 // set up of the startgamebutton --> activate the function start game
 export const startGameButton = document.getElementById("start-button");
@@ -15,7 +19,25 @@ startGameButton.addEventListener("click", startGame);
 class Game {
   constructor() {
     this.spaceship = new Spaceship();
+    this.asteroid = [];
+    this.generateAsteroids();
     this.animate();
+  }
+
+  //   In the generateAsteroids method, we create 10 asteroids by randomly generating their x and y coordinates.
+  //   If the random number is less than 0.5, we set the asteroid's x coordinate to be -50, which means it will start offscreen to the left.
+  //   Otherwise, we set it to be gameAreaWidth + 50, which means it will start offscreen to the right.
+  //   The y coordinate is a random number between 0 and the height of the game area.
+  generateAsteroids() {
+    const numAsteroids = 10;
+    const gameAreaWidth = gameArea.clientWidth;
+    const gameAreaHeight = gameArea.clientHeight;
+    for (let i = 0; i < numAsteroids; i++) {
+      const x = Math.random() < 0.5 ? -50 : gameAreaWidth + 50;
+      const y = Math.random() * gameAreaHeight;
+      const asteroid = new Asteroid(x, y); // pass x and y coordinates to the Asteroid constructor
+      this.asteroid.push(asteroid);
+    }
   }
 
   animate() {
@@ -31,6 +53,9 @@ class Game {
     if (pressedKeys.down) {
       this.spaceship.movement("down");
     }
+    this.asteroid.forEach((asteroid) => {
+      asteroid.move();
+    });
     requestAnimationFrame(() => {
       this.animate();
     });
