@@ -54,7 +54,6 @@ class Game {
       this.spaceship.movement("down");
     }
     this.moveObjects();
-    this.detectCollisions();
     requestAnimationFrame(() => {
       this.animate();
     });
@@ -63,19 +62,6 @@ class Game {
     this.asteroid.forEach((asteroid) => {
       asteroid.move();
     });
-  }
-  detectCollisions() {
-    this.asteroid.forEach((asteroid) => {
-      if (this.spaceship.checkCollision(asteroid)) {
-        console.log("Collision detected!");
-        this.gameOver();
-      }
-    });
-  }
-  gameOver() {
-    console.log("Game over!");
-    // Add your game over logic here, such as showing a game over screen, resetting the game, etc.
-    this.stop();
   }
 }
 
