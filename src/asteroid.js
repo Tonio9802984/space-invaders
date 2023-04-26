@@ -1,11 +1,21 @@
 import { gameArea } from "./index.js";
-const speed = 1.5;
+import { Spaceship } from "./space-ship.js";
+const speed = 0.1;
+
 export class Asteroid {
-  constructor(x, y) {
+  constructor() {
     this.element = document.createElement("div");
     this.element.className = "asteroid";
-    this.setPosition(x, y);
+    this.reset();
     gameArea.appendChild(this.element);
+  }
+
+  reset() {
+    const gameAreaWidth = gameArea.clientWidth;
+    const x = Math.random() * (gameAreaWidth - this.element.clientWidth);
+    const y = -50;
+    this.setPosition(x, y);
+    this.speed = 2 + Math.random() * 2; // Random speed between 2 and 4
   }
 
   setPosition(x, y) {
@@ -15,24 +25,20 @@ export class Asteroid {
   }
 
   move() {
-    this.x -= speed;
-    if (this.x < -50) {
-      const gameAreaWidth = gameArea.clientWidth;
-      const gameAreaHeight = gameArea.clientHeight;
-      const x = Math.random() < 0.5 ? -50 : gameAreaWidth + 50;
-      const y = Math.random() * gameAreaHeight;
-      this.setPosition(x, y);
-    } else if (this.x > gameArea.clientWidth + 50) {
-      const gameAreaHeight = gameArea.clientHeight;
-      const x = -50;
-      const y = Math.random() * gameAreaHeight;
-      this.setPosition(x, y);
-    } else if (this.y > gameArea.clientHeight + 50) {
-      const gameAreaWidth = gameArea.clientWidth;
-      const x = Math.random() * gameAreaWidth;
-      const y = -50;
-      this.setPosition(x, y);
+    this.y += this.speed;
+
+    // Move horizontally with a chance of 50%
+    const moveHorizontally = Math.random() < 0.5;
+    if (moveHorizontally) {
+      const moveRight = Math.random() < 0.5;
+      this.x += moveRight ? this.speed : -this.speed;
     }
+
+    // If the asteroid is off the bottom of the screen, reset its position
+    if (this.y > gameArea.clientHeight + 50) {
+      this.reset();
+    }
+
     this.setPosition(this.x, this.y);
   }
 }

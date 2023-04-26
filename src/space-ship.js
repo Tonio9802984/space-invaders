@@ -1,17 +1,21 @@
 import { gameArea } from "./index.js";
 import { speed } from "./index.js";
+import { Asteroid } from "./asteroid.js";
 export class Spaceship {
   // my space spaceship will have a method that will allow him to move in 4 direction
   // a method to set the initial position
   // a way to verif if we can move in the 4 directions
 
-  constructor() {
+  constructor(asteroids) {
     // set up of gameArea where we gonna have our map to play
 
     this.element = this.createSpaceShip();
     this.x = gameArea.clientWidth / 2 - this.element.clientWidth / 2;
     this.y = gameArea.clientHeight / 2 - this.element.clientHeight / 2;
     this.setPosition();
+    this.width = this.element.offsetWidth;
+    this.height = this.element.offsetHeight;
+    this.asteroids = asteroids;
   }
 
   createSpaceShip() {
@@ -44,5 +48,34 @@ export class Spaceship {
         break;
     }
     this.setPosition();
+  }
+  checkCollision(asteroids) {
+    if (!Array.isArray(this.asteroids)) {
+      return;
+    }
+
+    this.asteroids.forEach((asteroid) => {
+      const asteroidRect = asteroid.element.getBoundingClientRect();
+      const spaceshipRect = this.element.getBoundingClientRect();
+
+      const asteroidX = asteroidRect.left + asteroidRect.width / 2;
+      const asteroidY = asteroidRect.top + asteroidRect.height / 2;
+
+      const spaceshipX = spaceshipRect.left + spaceshipRect.width / 2;
+      const spaceshipY = spaceshipRect.top + spaceshipRect.height / 2;
+
+      const distance = Math.sqrt(
+        Math.pow(asteroidX - spaceshipX, 2) +
+          Math.pow(asteroidY - spaceshipY, 2)
+      );
+
+      if (
+        distance <
+        asteroid.element.offsetWidth / 2 + this.element.offsetWidth / 2
+      ) {
+        console.log("collision detected !!!");
+        asteroid.reset();
+      }
+    });
   }
 }

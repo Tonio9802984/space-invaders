@@ -6,7 +6,7 @@ export const modal = document.getElementById("start-game");
 export const gameArea = document.querySelector("main");
 // set up of the startgamebutton --> activate the function start game
 export const startGameButton = document.getElementById("start-button");
-export const speed = 7;
+export const speed = 5;
 export const pressedKeys = {
   left: false,
   right: false,
@@ -53,12 +53,29 @@ class Game {
     if (pressedKeys.down) {
       this.spaceship.movement("down");
     }
-    this.asteroid.forEach((asteroid) => {
-      asteroid.move();
-    });
+    this.moveObjects();
+    this.detectCollisions();
     requestAnimationFrame(() => {
       this.animate();
     });
+  }
+  moveObjects() {
+    this.asteroid.forEach((asteroid) => {
+      asteroid.move();
+    });
+  }
+  detectCollisions() {
+    this.asteroid.forEach((asteroid) => {
+      if (this.spaceship.checkCollision(asteroid)) {
+        console.log("Collision detected!");
+        this.gameOver();
+      }
+    });
+  }
+  gameOver() {
+    console.log("Game over!");
+    // Add your game over logic here, such as showing a game over screen, resetting the game, etc.
+    this.stop();
   }
 }
 
