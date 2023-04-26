@@ -28,6 +28,15 @@ main {
   background-size: cover;
 }
 
+.bullet {
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  background-color: yellow;
+  transform: translateY(-100%);
+  transition: transform 0.3s linear;
+}
+
 .asteroid {
   width: 60px;
   height: 60px;

@@ -38,7 +38,24 @@ export class Asteroid {
     if (this.y > gameArea.clientHeight + 50) {
       this.reset();
     }
-
+  }
+  destroy() {
+    this.element.remove();
+  }
+  checkCollision(spaceship) {
+    const asteroidRect = this.element.getBoundingClientRect();
+    const spaceshipRect = spaceship.element.getBoundingClientRect();
+    if (
+      asteroidRect.left < spaceshipRect.right &&
+      asteroidRect.right > spaceshipRect.left &&
+      asteroidRect.top < spaceshipRect.bottom &&
+      asteroidRect.bottom > spaceshipRect.top
+    ) {
+      spaceship.destroy();
+      clearInterval(gameIntervalId);
+      alert("Game over!");
+      this.reset();
+    }
     this.setPosition(this.x, this.y);
   }
 }
