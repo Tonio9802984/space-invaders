@@ -24,7 +24,7 @@ main {
   transform: translate(-50%, -50%);
   width: 60px;
   height: 60px;
-  background-image: url("../../img/ship.png");
+  background-image: url("./img/ship.png");
   background-size: cover;
 }
 
@@ -46,7 +46,7 @@ main {
 #time-remaining {
   font-size: 24px;
   font-weight: bold;
-  color: #ffffff;
+  color: #000000;
   background-color: #333333;
   padding: 10px 20px;
   border-radius: 5px;
