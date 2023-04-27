@@ -43,6 +43,17 @@ main {
   background-image: url(../../img/asteroid.png);
 }
 
+#time-remaining {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #333333;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* css for all the stars layers */
+
 star effect .stars {
   position: inherit;
   width: 100%;

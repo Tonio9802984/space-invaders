@@ -9,6 +9,7 @@ let asteroids = [];
 let spaceship = new Spaceship(asteroids);
 let gameIsOver = false;
 let score = 0;
+let timeRemaining = 30; // set the initial timer to 30 secondes
 
 function randomPosition() {
   const x = Math.floor(Math.random() * gameArea.clientWidth - Asteroid.width);
@@ -89,6 +90,9 @@ function gameOver() {
   message.style.transform = "translate(-50%, -50%)";
   gameArea.append(message);
   gameIsOver = true;
+
+  // Stop the timer when the game is over
+  clearInterval(timeInterval);
 }
 
 window.addEventListener("keydown", function (e) {
@@ -118,13 +122,35 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
+const menu = document.querySelector("#menu");
+
 let scoreDisplay = document.createElement("div");
 scoreDisplay.innerText = "Score: 0";
 scoreDisplay.style.position = "absolute";
 scoreDisplay.style.top = "10px";
 scoreDisplay.style.left = "10px";
 scoreDisplay.style.fontSize = "20px";
-gameArea.append(scoreDisplay);
+menu.append(scoreDisplay);
+
+// decrement the time remaining every second
+function displayTimeRemaining() {
+  let timeDisplay = document.createElement("div");
+  timeDisplay.setAttribute("id", "time-remaining");
+  timeDisplay.innerText = "Time Remaining: " + timeRemaining + "s";
+  menu.append(timeDisplay);
+
+  // decrement the time remaining everysecond
+  let intervalId = setInterval(function () {
+    timeRemaining--;
+    timeDisplay.innerText = "Time Remaining: " + timeRemaining + "s";
+    menu.append(timeDisplay);
+    // Game over when time runs out
+    if (timeRemaining <= 0) {
+      gameOver();
+      clearInterval(intervalId);
+    }
+  }, 1000);
+}
 
 //responsible for moving the bullets and asteroids,
 //checking for collisions, updating the score,
@@ -151,5 +177,7 @@ function animate() {
     setTimeout(animate, 20);
   }
 }
+// Call the displayTimeRemaining function to start the timer
+let timeInterval = displayTimeRemaining();
 
 animate();
