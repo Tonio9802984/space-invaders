@@ -4,8 +4,10 @@ import { speed } from "./index.js";
 export class Bullet {
   constructor(x, y) {
     this.element = this.createBullet();
-    this.x = x;
-    this.y = y;
+    this.width = this.element.clientWidth;
+    this.height = this.element.clientHeight;
+    this.x = x - this.width / 2;
+    this.y = y - this.height;
     this.setPosition();
   }
 

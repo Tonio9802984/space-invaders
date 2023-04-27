@@ -10,10 +10,11 @@ export class Spaceship {
 
   constructor(asteroids) {
     // set up of gameArea where we gonna have our map to play
-
     this.element = this.createSpaceShip();
-    this.x = gameArea.clientWidth / 2 - this.element.clientWidth / 2;
-    this.y = gameArea.clientHeight / 2 - this.element.clientHeight / 2;
+    this.width = this.element.clientWidth;
+    this.height = this.element.clientHeight;
+    this.x = gameArea.clientWidth / 2 - this.width / 2;
+    this.y = gameArea.clientHeight - this.height - 10;
     this.asteroids = asteroids;
     this.bullets = [];
     this.setPosition();

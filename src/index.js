@@ -3,7 +3,7 @@ import { Asteroid } from "./asteroid.js";
 import { Bullet } from "./bullet.js";
 //
 export const gameArea = document.querySelector("main");
-export const speed = 5;
+export const speed = 10;
 
 let asteroids = [];
 let spaceship = new Spaceship(asteroids);
@@ -11,7 +11,7 @@ let gameIsOver = false;
 let score = 0;
 
 function randomPosition() {
-  const x = Math.floor(Math.random() * (gameArea.clientWidth - 50));
+  const x = Math.floor(Math.random() * gameArea.clientWidth - Asteroid.width);
   const y = 50;
   return { x, y };
 }
@@ -95,9 +95,11 @@ window.addEventListener("keydown", function (e) {
   if (!gameIsOver) {
     switch (e.key) {
       case "ArrowLeft":
+        e.preventDefault();
         spaceship.movement("left");
         break;
       case "ArrowRight":
+        e.preventDefault();
         spaceship.movement("right");
         break;
       case "ArrowUp":
@@ -132,7 +134,7 @@ function animate() {
     scoreDisplay.innerText = "Score: " + score;
 
     // Create new asteroids
-    if (asteroids.length === 0 || Math.random() > 0.95) {
+    if (asteroids.length < 5 && Math.random() > 0.95) {
       setTimeout(createAsteroid, 1000);
     }
 

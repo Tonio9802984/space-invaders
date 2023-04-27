@@ -34,10 +34,18 @@ export class Asteroid {
       this.x += moveRight ? this.speed : -this.speed;
     }
 
-    // If the asteroid is off the bottom of the screen, reset its position
-    if (this.y > gameArea.clientHeight + 50) {
+    // Check if asteroid is outside of the game area
+    const asteroidRect = this.element.getBoundingClientRect();
+    const gameAreaRect = gameArea.getBoundingClientRect();
+    if (
+      asteroidRect.left > gameAreaRect.right ||
+      asteroidRect.right < gameAreaRect.left ||
+      asteroidRect.top > gameAreaRect.bottom ||
+      asteroidRect.bottom < gameAreaRect.top
+    ) {
       this.reset();
     }
+    this.setPosition(this.x, this.y);
   }
   destroy() {
     this.element.remove();
