@@ -40,7 +40,7 @@ main {
 .asteroid {
   width: 60px;
   height: 60px;
-  background-image: url(../../img/asteroid.png);
+  background-image: url(./img/asteroid.png);
 }
 
 #time-remaining {
