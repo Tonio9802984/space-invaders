@@ -2,7 +2,7 @@ import { gameArea } from "./index.js";
 import { speed } from "./index.js";
 import { Asteroid } from "./asteroid.js";
 import { Bullet } from "./bullet.js";
-import { isCollide } from "./index.js";
+import { game } from "./index.js";
 export class Spaceship {
   // my space spaceship will have a method that will allow him to move in 4 direction
   // a method to set the initial position
@@ -43,7 +43,7 @@ export class Spaceship {
 
     // check collision with asteroids
     for (let asteroid of this.asteroids) {
-      if (isCollide(asteroid.element, bullet.element)) {
+      if (game.isCollide(asteroid.element, bullet.element)) {
         asteroid.destroy();
         bullet.destroy();
         this.bullets.splice(this.bullets.indexOf(bullet), 1);
