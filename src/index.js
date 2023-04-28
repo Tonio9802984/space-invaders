@@ -173,7 +173,6 @@ export function game() {
 
   //responsible for moving the bullets and asteroids,
   //checking for collisions, updating the score,
-  //and calling itself again using requestAnimationFrame() to create an animation loop.
   function animate() {
     if (!gameIsOver) {
       scoreDisplay.innerText = "Score: " + score;

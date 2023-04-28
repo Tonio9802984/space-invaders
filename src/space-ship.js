@@ -9,17 +9,22 @@ export class Spaceship {
   // a way to verif if we can move in the 4 directions
 
   constructor(asteroids) {
-    // set up of gameArea where we gonna have our map to play
+    // Constructor function that sets up the initial properties of the spaceship object
+    // Creating a div element for the spaceship
     this.element = this.createSpaceShip();
+    // Setting the width and height properties of the spaceship
     this.width = this.element.clientWidth;
     this.height = this.element.clientHeight;
+    // Setting the initial x and y coordinates of the spaceship
     this.x = gameArea.clientWidth / 2 - this.width / 2;
     this.y = gameArea.clientHeight - this.height - 10;
+    // Setting the asteroids and bullets properties of the spaceship
     this.asteroids = asteroids;
     this.bullets = [];
     this.setPosition();
   }
 
+  // Method to create a spaceship div element and append it to the game area
   createSpaceShip() {
     const div = document.createElement("div");
     div.id = "spaceship";
@@ -34,6 +39,7 @@ export class Spaceship {
     this.element.style.top = `${this.y}px`;
   }
 
+  // Method to create a bullet object and add it to the bullets array
   shoot(asteroids) {
     let bullet = new Bullet(this.x + this.width / 2, this.y);
     // bullet.x = this.x + this.width / 2 - bullet.width / 2;
@@ -42,6 +48,7 @@ export class Spaceship {
     gameArea.append(bullet.element);
 
     // check collision with asteroids
+    // If the bullet collides with an asteroid, destroy both the bullet and asteroid and update the score
     for (let asteroid of this.asteroids) {
       if (game.isCollide(asteroid.element, bullet.element)) {
         asteroid.destroy();
@@ -53,8 +60,9 @@ export class Spaceship {
       }
     }
   }
-
+  // Method to move the spaceship in different directions based on the direction parameter passed
   movement(direction) {
+    // Switch statement that updates the x and y properties of the spaceship based on the direction parameter passed
     switch (direction) {
       case "left":
         this.x -= speed;
