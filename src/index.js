@@ -99,12 +99,13 @@ export function game() {
 
   function gameOver() {
     let message = document.createElement("div");
+    message.classList.add("game-over");
     message.innerText = "Game Over";
-    message.style.fontSize = "50px";
-    message.style.position = "absolute";
-    message.style.top = "50%";
-    message.style.left = "50%";
-    message.style.transform = "translate(-50%, -50%)";
+    // message.style.fontSize = "50px";
+    // message.style.position = "absolute";
+    // message.style.top = "50%";
+    // message.style.left = "50%";
+    // message.style.transform = "translate(-50%, -50%)";
     gameArea.append(message);
     gameIsOver = true;
 
