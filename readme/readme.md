@@ -53,7 +53,7 @@ Initial plan to reach the MVP
 
 The game logic is implemented in the index.js file. It contains the main game loop that updates the positions of all game components and checks for collisions between the spaceship, bullets, and asteroids.
 
-The game loop uses the requestAnimationFrame() method to animate the game components. It updates the positions of the spaceship and asteroids every frame and checks for collisions between the spaceship and asteroids.
+The game use loop updates the positions of the spaceship and asteroids every frame and checks for collisions between the spaceship and asteroids.
 
 When the player shoots a bullet, the game() creates a new Bullet object that moves up the screen. The game checks for collisions between the bullets and asteroids and destroys them if they collide.
 
