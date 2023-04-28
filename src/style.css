@@ -4,6 +4,7 @@
 
 menu {
   margin: auto;
+  display: flex;
 }
 
 body {
@@ -16,6 +17,30 @@ main {
   background-color: rgb(37, 36, 36);
   margin: auto;
   position: relative;
+}
+
+#scoreDisplay {
+  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: greenyellow;
+}
+
+#time-remaining {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  color: red;
+}
+
+p {
+  font-size: medium;
+}
+
+h2 {
+  font-style: bold;
+  color: chartreuse;
 }
 
 #copyright {
@@ -61,15 +86,6 @@ main {
   width: 60px;
   height: 60px;
   background-image: url(./img/asteroid.png);
-}
-
-#time-remaining {
-  font-size: 24px;
-  font-weight: bold;
-  color: #000000;
-  background-color: #333333;
-  padding: 10px 20px;
-  border-radius: 5px;
 }
 
 .game-over {

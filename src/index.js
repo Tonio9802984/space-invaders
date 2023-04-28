@@ -101,11 +101,6 @@ export function game() {
     let message = document.createElement("div");
     message.classList.add("game-over");
     message.innerText = "Game Over";
-    // message.style.fontSize = "50px";
-    // message.style.position = "absolute";
-    // message.style.top = "50%";
-    // message.style.left = "50%";
-    // message.style.transform = "translate(-50%, -50%)";
     gameArea.append(message);
     gameIsOver = true;
 
@@ -142,26 +137,31 @@ export function game() {
   });
 
   const menu = document.querySelector("#menu");
+  if (!menu) {
+    console.error("Menu element not found.");
+  }
 
-  let scoreDisplay = document.createElement("div");
-  scoreDisplay.innerText = "Score: 0";
-  scoreDisplay.style.position = "absolute";
-  scoreDisplay.style.top = "10px";
-  scoreDisplay.style.left = "10px";
-  scoreDisplay.style.fontSize = "20px";
-  menu.append(scoreDisplay);
+  //const dialog = document.getElementById("dialog");
+
+  const scoreDisplay = document.getElementById("scoreDisplay");
+
+  // let scoreDisplay = document.createElement("div");
+  // scoreDisplay.setAttribute("id", "scoreDisplay");
+  // scoreDisplay.classList.add("score");
+  // scoreDisplay.innerText = "Score: 0";
+  // menu.append(scoreDisplay);
 
   // decrement the time remaining every second
   function displayTimeRemaining() {
     let timeDisplay = document.createElement("div");
     timeDisplay.setAttribute("id", "time-remaining");
-    timeDisplay.innerText = "Time Remaining: " + timeRemaining + "s";
+    timeDisplay.innerText = "Time: " + timeRemaining + "s";
     menu.append(timeDisplay);
 
     // decrement the time remaining everysecond
     let intervalId = setInterval(function () {
       timeRemaining--;
-      timeDisplay.innerText = "Time Remaining: " + timeRemaining + "s";
+      timeDisplay.innerText = "Time: " + timeRemaining + "s";
       menu.append(timeDisplay);
       // Game over when time runs out
       if (timeRemaining <= 0) {
@@ -202,3 +202,7 @@ export function game() {
   animate();
 }
 document.getElementById("close-dialog").addEventListener("click", game);
+
+// ressources used
+// https://www.freepng.fr/png-ti9jau/ --> picture of the invaders on the start
+// https://codepen.io/FacepalmRobot/pen/yNoypb --> GAME OVER ANIMATION
