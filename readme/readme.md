@@ -28,7 +28,6 @@ Initial plan to reach the MVP
 - Having a big grid who will be the container for the game, each object on the game will move thanks to this grid
 - having a square (representing my spaceship) in it who will be able to move in all direction on the grid
 - be able to shoot with this square
-- faire une gestion de tir comme ce que l'on a vu en cours
 - having a screen where we gonna display some informations (score + time)
 - build an instruction page
 - Having little boxes dropping from the top of the container
@@ -121,7 +120,7 @@ wrap function
 
 # Big mistake
 
-there is so much !!!!!
+there are so many !!!!!
 
 # Demo
 
@@ -129,18 +128,15 @@ https://tonio9802984.github.io/space-invaders/
 
 # Feature slide
 
-**spaceship movement** is achieved by modifying the CSS properties of its element using the element.style property.
+**spaceship movement** achieved by modifying the CSS properties --> element.style property.
 
-The element is a reference to the spaceship element in the HTML DOM,
-created in the createSpaceship() method of the Spaceship class.
-
-The element.style property provides access to the inline CSS styles of the element, allowing you to modify them using JavaScript.
-
-The spaceship is moved using the move() method of the Spaceship class. This method is called repeatedly in the game loop, causing the spaceship to move continuously.
-
-Inside the move() method, the new position of the spaceship is calculated based on its current position and the arrow key input from the user. The x and y properties of the spaceship object are updated accordingly.
-
-Finally, the setPosition() method is called to set the new position of the spaceship element using the element.style property. This method sets CSS properties of the element to the new x and y coordinates, respectively, effectively moving the spaceship on the screen.
+- The element.style property provides access to the inline CSS styles of the element, allowing you to modify them
+- The spaceship is moved using the move() method of the Spaceship class.
+- This method is called repeatedly in the game loop, causing the spaceship to move continuously.
+- Inside the move() method, the new position of the spaceship is calculated based on its current position and the arrow key input from the user.
+- The x and y properties of the spaceship object are updated accordingly.
+- Finally, the setPosition() method is called to set the new position of the spaceship element using the element.style property.
+- This method sets CSS properties of the element to the new x and y coordinates, respectively, effectively moving the spaceship on the screen.
 
 # Future Improvements
 
